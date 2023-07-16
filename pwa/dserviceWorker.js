@@ -152,6 +152,7 @@ self.addEventListener("activate", (evt) => {
 });
 
 self.addEventListener("fetch", (evt) => {
+	console.log(evt)
 	// Handle fetch request
 	// Check if online, external, font, CSS, HTML
 	const isOnline = self.navigator.onLine;
@@ -179,10 +180,10 @@ self.addEventListener("fetch", (evt) => {
 			evt.respondWith(cacheFirst(evt));
 		} else if (isImage) {
 			evt.respondWith(
-				networkRevalidateAndCache(evt) || offlineResponse(evt)
+				networkFirst(evt) || offlineResponse(evt)
 			);
 		} else {
-			evt.respondWith(cacheFirst(evt)); // Handle other resources with cache-first strategy
+			evt.respondWith(networkOnly(evt)); // Handle other resources with cache-first strategy
 		}
 	} else {
 		evt.respondWith(offlineResponse(evt));
