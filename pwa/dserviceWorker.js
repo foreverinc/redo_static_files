@@ -210,7 +210,7 @@ function networkOnly(evt) {
 
 function networkRevalidateAndCache(evt) {
 	// Cache with network fallback strategy: First, attempt to fetch the response from cache. If available, return it. If not, fetch it from the network and cache the response for future use.
-	return fetch(evt.request).then(fetchResponse => {
+	return fetch(evt.request,{mode:'cors',credentials:'omit'}).then(fetchResponse => {
 		if (fetchResponse.ok) {
 			//put in cache
 			return caches.open(siteCache).then(cache => {

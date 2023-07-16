@@ -1,4 +1,4 @@
-const siteCache = "site-cache-v0";
+const siteCache = "site-cache-v2";
 const dynamicCache = "dynamic-cache-v1";
 const assets = [
 	"/",
@@ -8,7 +8,10 @@ const assets = [
 	"https://foreverinc.github.io/redo_static_files/js/main.js",
 	"https://foreverinc.github.io/redo_static_files/js/app_theming.js",
 	"https://foreverinc.github.io/redo_static_files/images/logo.svg",
+	"https://foreverinc.github.io/redo_static_files/images/badge.svg",
 	"https://foreverinc.github.io/redo_static_files/images/favicon.ico",
+	"https://foreverinc.github.io/redo_static_files/images/coins.png",
+	"https://foreverinc.github.io/redo_static_files/images/banner.png",
 	"https://foreverinc.github.io/redo_static_files/images/default_avater.webp",
 	"https://foreverinc.github.io/redo_static_files/css/output.css",
 	"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap",
