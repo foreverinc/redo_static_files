@@ -3,7 +3,7 @@ const dynamicCache = "dynamic-cache-v1";
 const assets = [
 	"/",
 	"/manifest.json",
-
+	"/offline",
 	"https://code.jquery.com/jquery-3.6.0.min.js",
 	"https://foreverinc.github.io/redo_static_files/js/main.js",
 	"https://foreverinc.github.io/redo_static_files/js/app_theming.js",
