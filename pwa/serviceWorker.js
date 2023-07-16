@@ -111,62 +111,66 @@ self.addEventListener("fetch", (evt) => {
 	}
 });
 
-async function cacheOnly(evt) {
+function cacheOnly(evt) {
 	// Cache only strategy: Return the response from cache if available, otherwise, respond with cache
-	return await caches.match(evt.request);
+	return caches.match(evt.request);
 }
 
-async function cacheFirst(evt) {
+function cacheFirst(evt) {
 	// Cache first strategy: Attempt to fetch the response from cache, if available, return it. Otherwise, fetch it from the network and cache the response for future use.
-	const cacheResponse = await caches.match(evt.request);
-	return cacheResponse || fetch(evt.request);
+	return caches.match(evt.request).then((cacheResponse) => {
+		return cacheResponse || fetch(evt.request);
+	});
 }
 
-async function networkOnly(evt) {
+function networkOnly(evt) {
 	// Network only strategy: Always fetch the response from the network without caching it.
-	return await fetch(evt.request);
+	return fetch(evt.request);
 }
 
-async function networkRevalidateAndCache(evt) {
+function networkRevalidateAndCache(evt) {
 	// Cache with network fallback strategy: First, attempt to fetch the response from cache. If available, return it. If not, fetch it from the network and cache the response for future use.
-	const fetchResponse = await fetch(evt.request);
-	if (fetchResponse.ok) {
-		const cache = await caches.open(siteCache);
-		cache.put(evt.request, fetchResponse.clone());
-		return fetchResponse;
-	} else {
-		return await caches.match(evt.request);
-	}
+	return fetch(evt.request, { mode: "cors", credentials: "omit" }).then(
+		(fetchResponse) => {
+			if (fetchResponse.ok) {
+				//put in cache
+				return caches.open(siteCache).then((cache) => {
+					cache.put(evt.request, fetchResponse.clone());
+					return fetchResponse;
+				});
+			} else {
+				return caches.match(evt.request);
+			}
+		}
+	);
 }
 
-async function networkFirst(evt) {
+function networkFirst(evt) {
 	// Network first strategy: First, attempt to fetch the response from the network. If successful, return it and cache the response for future use. If the network request fails, fallback to the cache and return the response if available.
-	const fetchResponse = await fetch(evt.request);
-	if (fetchResponse.ok) {
-		return fetchResponse;
-	} else {
-		return await caches.match(evt.request);
-	}
+	return fetch(evt.request).then((fetchResponse) => {
+		if (fetchResponse.ok) return fetchResponse;
+		return caches.match(evt.request);
+	});
 }
 
-async function staleWhileRevalidate(evt) {
+function staleWhileRevalidate(evt) {
 	// Stale-while-revalidate strategy: Return the response from the cache while simultaneously sending a request to the network to check for an updated response. If an updated response is received, cache it and return the updated response.
-	const cacheResponse = await caches.match(evt.request);
-	const fetchResponse = await fetch(evt.request);
-	if (fetchResponse.ok) {
-		const cache = await caches.open(siteCache);
-		cache.put(evt.request, fetchResponse.clone());
-		return fetchResponse;
-	} else {
-		return cacheResponse;
-	}
+	return caches.match(evt.request).then((cacheResponse) => {
+		let fetchResponse = fetch(evt.request).then((response) => {
+			return caches.open(siteCache).then((cache) => {
+				cache.put(evt.request, response.clone());
+				return response;
+			});
+		});
+		return cacheResponse || fetchResponse;
+	});
 }
 
-async function offlineResponse(evt) {
-	// Return a specific placeholder image from the cache
-	return await caches.match("/offline/");
+function offlineResponse(evt) {
+	//return a specific placeholder image from the cache
+	return caches.match("/offline/");
+}
+function fakeServerError(evt) {
+	//pretend to have a server-side error
 }
 
-async function fakeServerError(evt) {
-	// Pretend to have a server-side error
-}
