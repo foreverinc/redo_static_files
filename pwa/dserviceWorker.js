@@ -1,16 +1,21 @@
-const siteCache = "site-cache-v1";
+const siteCache = "site-cache-v0";
 const dynamicCache = "dynamic-cache-v1";
+
 const assets = [
 	"/",
 	"/manifest.json",
-
 	"https://code.jquery.com/jquery-3.6.0.min.js",
-	"https://foreverinc.github.io/redo_static_files/js/main.js",
-	"https://foreverinc.github.io/redo_static_files/js/app_theming.js",
-	"https://foreverinc.github.io/redo_static_files/images/logo.svg",
-	"https://foreverinc.github.io/redo_static_files/images/favicon.ico",
 	"https://foreverinc.github.io/redo_static_files/images/default_avater.webp",
-	"https://foreverinc.github.io/redo_static_files/css/output.css",
+	"static/images/badge.svg",
+	"static/images/coins.png",
+	"static/images/banner.png",
+	"/offline/",
+	"static/js/main.js",
+	"static/js/app_theming.js",
+	"static/images/logo.svg",
+	"static/images/favicon.ico",
+	"static/images/default_avater.webp",
+	"static/css/output.css",
 	"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap",
 	"/accounts/login/",
 	"accounts/signup/",
@@ -48,93 +53,11 @@ const assets = [
 	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-640-1136.jpg",
 	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1136-640.jpg",
 ];
-const imageLinks = [
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2048-2732.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2732-2048.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1668-2388.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2388-1668.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1536-2048.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2048-1536.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1668-2224.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2224-1668.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1620-2160.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2160-1620.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1290-2796.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2796-1290.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1179-2556.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2556-1179.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1284-2778.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2778-1284.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1170-2532.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2532-1170.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1125-2436.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2436-1125.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1242-2688.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2688-1242.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-828-1792.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1792-828.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1242-2208.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2208-1242.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-750-1334.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1334-750.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-640-1136.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1136-640.jpg",
-];
-
-const assetsB = [
-	"/",
-	"/manifest.json",
-
-	"https://code.jquery.com/jquery-3.6.0.min.js",
-	"/offline/",
-	"static/js/main.js",
-	"static/js/app_theming.js",
-	"static/images/logo.svg",
-	"static/images/favicon.ico",
-	"static/images/default_avater.webp",
-	"static/css/output.css",
-	"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap",
-	"/accounts/login/",
-	"accounts/signup/",
-	'https://foreverinc.github.io/redo_static_files/pwa/icons/pwa-192x192.png',
-	'https://foreverinc.github.io/redo_static_files/pwa/icons/pwa-64x64.png',
-	'https://foreverinc.github.io/redo_static_files/pwa/icons/pwa-512x512.png',
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2048-2732.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2732-2048.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1668-2388.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2388-1668.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1536-2048.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2048-1536.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1668-2224.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2224-1668.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1620-2160.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2160-1620.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1290-2796.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2796-1290.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1179-2556.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2556-1179.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1284-2778.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2778-1284.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1170-2532.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2532-1170.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1125-2436.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2436-1125.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1242-2688.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2688-1242.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-828-1792.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1792-828.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1242-2208.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-2208-1242.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-750-1334.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1334-750.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-640-1136.jpg",
-	"https://foreverinc.github.io/redo_static_files/pwa/icons/apple-splash-1136-640.jpg",
-];
 
 self.addEventListener("install", (evt) => {
 	evt.waitUntil(
 		caches.open(siteCache).then((cache) => {
-			return cache.addAll(assetsB);
+			return cache.addAll(assets);
 		})
 	);
 });
@@ -151,47 +74,41 @@ self.addEventListener("activate", (evt) => {
 	);
 });
 
-self.addEventListener("fetch", (evt) => {
-	console.log(evt)
-	// Handle fetch request
-	// Check if online, external, font, CSS, HTML
+
+
+self.addEventListener('fetch', event => {
 	const isOnline = self.navigator.onLine;
-	const url = new URL(evt.request.url);
-	const isImage =
-		url.pathname.includes(".png") ||
-		url.pathname.includes(".jpg") ||
-		url.pathname.includes(".jpeg") ||
-		url.pathname.includes(".gif");
-	const isSVG = url.pathname.includes(".svg");
-	const isStaticImg = url.pathname.includes("/static/images");
-	const isDefaultAvatar = url.pathname.includes("default_avater.webp");
-	const isCss =
-		url.pathname.endsWith(".css") ||
-		url.hostname.includes("googleapis.com");
-	const isFont =
-		url.hostname.includes("gstatic") || url.pathname.endsWith("woff2");
-	const selfUrl = new URL(self.location);
-	const isExternal =
-		evt.request.mode === "cors" || selfUrl.hostname !== url.hostname;
+	
+	const url = new URL(event.request.url)
+	//console.log(url)
+	const isStatic =
+		url.hostname.includes("foreverinc.github.io") ||
+		url.pathname.includes(".js") ||
+		url.pathname.endsWith(".js") ||
+		url.hostname.includes("fonts.googleapis.com") ||
+		url.pathname.includes("logo.svg") ||
+		url.hostname.includes("fonts.gstatic.com") ||
+		url.pathname.includes("favicon.ico") ||
+		url.pathname.includes("output.css") ||
+		url.pathname.includes(".svg") ||
+		url.pathname.includes("coins.png") ||
+		url.pathname.includes("banner.png") ||
+		url.pathname.includes("default_avater.webp");
+	//console.log(`From statics: ${isStatic}`);
+	//const url2=new URL(event.request.referrer)
+	//const isProfile = url2.pathname.includes("/flow/account/");
+	//console.log(`isProfile: ${isProfile}`)
 
-	// Respond with appropriate strategy
 	if (isOnline) {
-		if (isDefaultAvatar || isCss || isFont || isSVG || isStaticImg) {
-			evt.respondWith(cacheFirst(evt));
-		} else if (isImage) {
-			evt.respondWith(
-				networkFirst(evt) || offlineResponse(evt)
-			);
-		} else {
-			evt.respondWith(networkOnly(evt)); // Handle other resources with cache-first strategy
-		}
+		event.respondWith(networkOnly(event))
 	} else {
-		evt.respondWith(offlineResponse(evt));
+		event.respondWith(offlineResponse(event))
 	}
-});
+})
 
 
 
+//Caching Strategies;
 function cacheOnly(evt) {
 	// Cache only strategy: Return the response from cache if available, otherwise, respond with cache
 	return caches.match(evt.request);
@@ -249,7 +166,133 @@ function offlineResponse(evt) {
 	//return a specific placeholder image from the cache
 	return caches.match('/offline/')
 }
-function fakeServerError(evt) {
-	//pretend to have a server-side error
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// self.addEventListener("fetch", (evt) => {
+// 	console.log(evt)
+// 	// Handle fetch request
+// 	// Check if online, external, font, CSS, HTML
+// 	const isOnline = self.navigator.onLine;
+// 	const url = new URL(evt.request.url);
+// 	const isImage =
+// 		url.pathname.includes(".png") ||
+// 		url.pathname.includes(".jpg") ||
+// 		url.pathname.includes(".jpeg") ||
+// 		url.pathname.includes(".gif");
+// 	const isSVG = url.pathname.includes(".svg");
+// 	const isStaticImg = url.pathname.includes("/static/images");
+// 	const isDefaultAvatar = url.pathname.includes("default_avater.webp");
+// 	const isCss =
+// 		url.pathname.endsWith(".css") ||
+// 		url.hostname.includes("googleapis.com");
+// 	const isFont =
+// 		url.hostname.includes("gstatic") || url.pathname.endsWith("woff2");
+// 	const selfUrl = new URL(self.location);
+// 	const isExternal =
+// 		evt.request.mode === "cors" || selfUrl.hostname !== url.hostname;
+// 	const IsJs = url.pathname.endsWith('.js') || url.pathname.includes('.js')
+// 	if (IsJs) {
+// 		console.log(evt.request.referrer)
+// 	}
+// 	// Respond with appropriate strategy
+// 	if (isOnline) {
+// 		if (isDefaultAvatar || isCss || isFont || isSVG || isStaticImg) {
+// 			evt.respondWith(cacheFirst(evt));
+// 		} else if (isImage) {
+// 			evt.respondWith(
+// 				networkFirst(evt) || offlineResponse(evt)
+// 			);
+// 		} else {
+// 			evt.respondWith(networkOnly(evt)); // Handle other resources with cache-first strategy
+// 		}
+// 	} else {
+// 		evt.respondWith(offlineResponse(evt));
+// 	}
+// });
+
+
+
+// function cacheOnly(evt) {
+// 	// Cache only strategy: Return the response from cache if available, otherwise, respond with cache
+// 	return caches.match(evt.request);
+// }
+
+// function cacheFirst(evt) {
+// 	// Cache first strategy: Attempt to fetch the response from cache, if available, return it. Otherwise, fetch it from the network and cache the response for future use.
+// 	return caches.match(evt.request).then(cacheResponse => {
+// 		return cacheResponse || fetch(evt.request);
+// 	})
+// }
+
+// function networkOnly(evt) {
+// 	// Network only strategy: Always fetch the response from the network without caching it.
+// 	return fetch(evt.request);
+// }
+
+// function networkRevalidateAndCache(evt) {
+// 	// Cache with network fallback strategy: First, attempt to fetch the response from cache. If available, return it. If not, fetch it from the network and cache the response for future use.
+// 	return fetch(evt.request,{mode:'cors',credentials:'omit'}).then(fetchResponse => {
+// 		if (fetchResponse.ok) {
+// 			//put in cache
+// 			return caches.open(siteCache).then(cache => {
+// 				cache.put(evt.request, fetchResponse.clone());
+// 				return fetchResponse;
+// 			})
+// 		} else {
+// 			return caches.match(evt.request)
+// 		}
+// 	})
+// }
+
+// function networkFirst(evt) {
+// 	// Network first strategy: First, attempt to fetch the response from the network. If successful, return it and cache the response for future use. If the network request fails, fallback to the cache and return the response if available.
+// 	return fetch(evt.request).then(fetchResponse => {
+// 		if (fetchResponse.ok) return fetchResponse;
+// 		return caches.match(evt.request)
+// 	})
+// }
+
+// function staleWhileRevalidate(evt) {
+// 	// Stale-while-revalidate strategy: Return the response from the cache while simultaneously sending a request to the network to check for an updated response. If an updated response is received, cache it and return the updated response.
+// 	return caches.match(evt.request).then(cacheResponse => {
+// 		let fetchResponse = fetch(evt.request).then(response => {
+// 			return caches.open(siteCache).then(cache => {
+// 				cache.put(evt.request, response.clone());
+// 				return response;
+// 			})
+// 		})
+// 		return cacheResponse || fetchResponse
+// 	})
+// }
+
+// function offlineResponse(evt) {
+// 	//return a specific placeholder image from the cache
+// 	return caches.match('/offline/')
+// }
+// function fakeServerError(evt) {
+// 	//pretend to have a server-side error
+// }
 
